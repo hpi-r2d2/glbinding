@@ -1,4 +1,7 @@
-#version 150 core
+#version 310 es
+
+precision highp float;
+precision highp int;
 
 in vec3 a_vertex;
 out float v_h;
@@ -8,10 +11,15 @@ uniform float time;
 
 uniform int numcubes;
 
+int myMod(int x, int y)
+{
+	return x - y * int(floor(float(x)/float(y)));
+}
+
 void main()
 {
 	float oneovernumcubes = 1.f / float(numcubes);
-	vec2 uv = vec2(mod(gl_InstanceID, numcubes), floor(gl_InstanceID * oneovernumcubes)) * 2.0 * oneovernumcubes;
+	vec2 uv = vec2(float(myMod(gl_InstanceID, numcubes)), float(floor(float(gl_InstanceID) * oneovernumcubes))) * 2.0 * oneovernumcubes;
 
 	vec3 v = a_vertex * oneovernumcubes - (1.0 - oneovernumcubes);
 	v.xz  += uv;

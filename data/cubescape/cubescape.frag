@@ -1,4 +1,7 @@
-#version 150 core
+#version 310 es
+
+precision highp float;
+precision highp int;
 
 in float g_h;
 

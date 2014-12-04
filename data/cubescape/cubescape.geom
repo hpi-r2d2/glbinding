@@ -1,4 +1,8 @@
-#version 150 core
+#version 310 es
+#extension GL_EXT_geometry_shader : enable
+
+precision highp float;
+precision highp int;
 
 uniform mat4 modelViewProjection;
 uniform int numcubes;
