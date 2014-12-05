@@ -3,6 +3,8 @@
 # GLFW_INCLUDE_DIR
 # GLFW_LIBRARY
 
+include(FindPackageHandleStandardArgs)
+
 find_path(GLFW_INCLUDE_DIR GLFW/glfw3.h
     $ENV{GLFWDIR}/include
     $ENV{GLFW_HOME}/include

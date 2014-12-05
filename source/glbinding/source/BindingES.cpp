@@ -1,5 +1,5 @@
 
-#include <glbinding/Binding.h>
+#include <glbinding/BindingES.h>
 
 #include <unordered_map>
 #include <mutex>
@@ -11,34 +11,36 @@ namespace
 
     std::recursive_mutex g_mutex;
     std::unordered_map<glbinding::ContextHandle, int> g_bindings;
+    const glbinding::BindingES::array_t none = {{}};
 }
 
 namespace glbinding 
 {
 
-std::vector<AbstractFunction *> Binding::s_additionalFunctions;
+std::vector<AbstractFunction *> BindingES::s_additionalFunctions;
 
-const Binding::array_t & Binding::functions() 
+const BindingES::array_t & BindingES::functions()
 {
-    return s_functions;
+    return none;
+    //return s_esfunctions;
 }
 
-const std::vector<AbstractFunction *> & Binding::additionalFunctions()
+const std::vector<AbstractFunction *> & BindingES::additionalFunctions()
 {
     return s_additionalFunctions;
 }
 
-size_t Binding::size()
+size_t BindingES::size()
 {
     return s_functions.size() + s_additionalFunctions.size();
 }
 
-void Binding::initialize(const bool resolveFunctions)
+void BindingES::initialize(const bool resolveFunctions)
 {
     initialize(getCurrentContext(), true, resolveFunctions);
 }
 
-void Binding::initialize(
+void BindingES::initialize(
     const ContextHandle context
 ,   const bool _useContext
 ,   const bool _resolveFunctions)
@@ -68,12 +70,12 @@ void Binding::initialize(
         resolveFunctions();
 }
 
-void Binding::registerAdditionalFunction(AbstractFunction * function)
+void BindingES::registerAdditionalFunction(AbstractFunction * function)
 {
     s_additionalFunctions.push_back(function);
 }
 
-void Binding::resolveFunctions()
+void BindingES::resolveFunctions()
 {
     for (AbstractFunction * function : functions())
         function->resolveAddress();
@@ -82,12 +84,12 @@ void Binding::resolveFunctions()
         function->resolveAddress();
 }
 
-void Binding::useCurrentContext()
+void BindingES::useCurrentContext()
 {
     useContext(getCurrentContext());
 }
 
-void Binding::useContext(const ContextHandle context)
+void BindingES::useContext(const ContextHandle context)
 {
     t_context = context;
 
@@ -108,12 +110,12 @@ void Binding::useContext(const ContextHandle context)
     g_mutex.unlock();
 }
 
-void Binding::releaseCurrentContext()
+void BindingES::releaseCurrentContext()
 {
     releaseContext(getCurrentContext());
 }
 
-void Binding::releaseContext(const ContextHandle context)
+void BindingES::releaseContext(const ContextHandle context)
 {
     g_mutex.lock();
     AbstractFunction::neglectState(g_bindings[context]);

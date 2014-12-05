@@ -44,8 +44,7 @@ std::string bitfieldString(T value, const std::unordered_map<T, std::string> & m
 	}
 	
 	return ss.str();
-};
-
+}
 
 
 

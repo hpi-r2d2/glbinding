@@ -7,6 +7,7 @@
 #include <type_traits>
 
 #include <glbinding/Binding.h>
+#include <glbinding/BindingES.h>
 #include <glbinding/Meta.h>
 
 #include "callbacks_private.h"
@@ -58,7 +59,12 @@ void AbstractFunction::provideState(const int pos)
     // if a state at pos exists, it is assumed to be neglected before
     if (s_maxpos < pos)
     {
-        for (AbstractFunction * function : Binding::functions())
+        auto glFunctions = Binding::functions();
+        for (AbstractFunction * function : glFunctions)
+            function->m_states.resize(static_cast<std::size_t>(pos + 1));
+
+        auto glesFunctions = BindingES::functions();
+        for (AbstractFunction * function : glesFunctions)
             function->m_states.resize(static_cast<std::size_t>(pos + 1));
 
         s_maxpos = pos;
@@ -77,11 +83,21 @@ void AbstractFunction::neglectState(const int pos)
             function->m_states.resize(static_cast<std::size_t>(std::max(0, pos - 1)));
         }
 
+        for (AbstractFunction * function : BindingES::functions())
+        {
+            function->m_states.resize(static_cast<std::size_t>(std::max(0, pos - 1)));
+        }
+
         --s_maxpos;
     }
     else
     {
         for (AbstractFunction * function : Binding::functions())
+        {
+            function->m_states[pos] = State();
+        }
+
+        for (AbstractFunction * function : BindingES::functions())
         {
             function->m_states[pos] = State();
         }
@@ -111,7 +127,7 @@ void AbstractFunction::resolveAddress()
     if (state().initialized)
         return;
 
-    state().address = getProcAddress(m_name);
+    state().address = getProcAddressES(m_name);
     state().initialized = true;
 }
 

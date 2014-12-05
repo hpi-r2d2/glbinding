@@ -9,7 +9,6 @@
 
 #include <glbinding/ContextHandle.h>
 #include <glbinding/Function.h>
-//#include <glbinding/PointerIterator.h>
 
 
 namespace glbinding

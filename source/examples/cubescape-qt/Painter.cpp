@@ -1,7 +1,7 @@
 
 #include "Painter.h"
 
-#include <glbinding/Binding.h>
+#include <glbinding/BindingES.h>
 #include <glbinding/ContextInfo.h>
 
 #include "../cubescape/CubeScape.h"
@@ -23,7 +23,7 @@ void Painter::initialize()
     if (m_initialized)
         return;
 
-    glbinding::Binding::initialize(false); // only resolve functions that are actually used (lazy)
+    glbinding::BindingES::initialize(false); // only resolve functions that are actually used (lazy)
 
     m_cubescape = new CubeScape();
 

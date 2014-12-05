@@ -21,6 +21,7 @@ namespace glbinding
 class GLBINDING_API AbstractFunction
 {
     friend class Binding;
+    friend class BindingES;
 
 public:
     AbstractFunction(const char * name);

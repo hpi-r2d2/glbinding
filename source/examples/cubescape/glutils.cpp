@@ -4,11 +4,7 @@
 #include <iostream>
 #include <math.h>
 
-
-#include <glbinding/gl/gl32core.h>
-
-
-using namespace gl32core;
+using namespace gles;
 
 
 void compile_info(const GLuint shader)

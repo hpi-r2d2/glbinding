@@ -5,12 +5,12 @@
 #include <fstream>
 #include <math.h>
 
-#include <glbinding/gl/gl.h>
+#include <glbinding/gles/gles.h>
 
 #include "glutils.h"
 #include "RawFile.h"
 
-using namespace gl;
+using namespace gles;
 
 namespace
 {

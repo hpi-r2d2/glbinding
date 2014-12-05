@@ -5,8 +5,8 @@ message(STATUS "Lib ${target}")
 
 # External libraries
 
-find_package(OpenGL REQUIRED)
-
+find_package(OpenGLES REQUIRED)
+find_package(OpenGL   REQUIRED)
 
 # Includes
 
@@ -19,6 +19,7 @@ include_directories(
 
 set(libs
     ${OPENGL_LIBRARIES}
+    ${OPENGLES_LIBRARIES}
 )
 
 
@@ -60,14 +61,27 @@ set(api_includes
     ${include_path}/gl/types.inl
     ${include_path}/gl/values.inl
     ${include_path}/gl/boolean.inl
+    
+    ${include_path}/gles/gles.h
+    ${include_path}/gles/nogles.h
+
+    ${include_path}/gles/bitfield.h
+    ${include_path}/gles/boolean.h
+    ${include_path}/gles/enum.h
+    ${include_path}/gles/extension.h
+    ${include_path}/gles/functions.h
+    ${include_path}/gles/types.h
+    ${include_path}/gles/values.h
+    ${include_path}/gles/types.inl
+    ${include_path}/gles/values.inl
+    ${include_path}/gles/boolean.inl
 
     ${include_path}/AbstractFunction.h
     ${include_path}/AbstractValue.h
     ${include_path}/Function.h
     ${include_path}/Function.hpp
     ${include_path}/Binding.h
-    #${include_path}/PointerIterator.h
-    #${include_path}/PointerIterator.hpp
+    ${include_path}/BindingES.h
     ${include_path}/Meta.h
     ${include_path}/ProcAddress.h
     ${include_path}/ContextHandle.h
@@ -89,11 +103,16 @@ set(sources
     
     ${source_path}/gl/types.cpp
     ${source_path}/gl/test.cpp
+    
+    ${source_path}/gles/types.cpp
+    ${source_path}/gles/test.cpp
 
     ${source_path}/AbstractFunction.cpp
     ${source_path}/AbstractValue.cpp
     ${source_path}/Binding.cpp
+    ${source_path}/BindingES.cpp
     ${source_path}/Binding_objects.cpp
+    ${source_path}/BindingES_objects.cpp
     ${source_path}/ProcAddress.cpp
     ${source_path}/ContextHandle.cpp
     ${source_path}/ContextInfo.cpp

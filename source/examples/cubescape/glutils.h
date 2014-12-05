@@ -1,10 +1,10 @@
 
 #pragma once
 
-#include <glbinding/gl/gl32core.h>
+#include <glbinding/gles/gles.h>
 
-void compile_info(const gl32core::GLuint shader);
-void link_info(const gl32core::GLuint program);
+void compile_info(const gles::GLuint shader);
+void link_info(const gles::GLuint program);
 
 struct mat4
 {

@@ -15,13 +15,13 @@ int main(int argc, char * argv[])
 
     QSurfaceFormat format;
     format.setDepthBufferSize(16);
-    //format.setRenderableType(QSurfaceFormat::OpenGLES);
-    format.setRenderableType(QSurfaceFormat::OpenGL);
+    format.setRenderableType(QSurfaceFormat::OpenGLES);
+    //format.setRenderableType(QSurfaceFormat::OpenGL);
 
-#ifdef __APPLE__
-    format.setVersion(3, 2);
-    format.setProfile(QSurfaceFormat::CoreProfile);
-#endif
+//#ifdef __APPLE__
+//    format.setVersion(3, 2);
+//    format.setProfile(QSurfaceFormat::CoreProfile);
+//#endif
 
     QScopedPointer<Viewer> viewer(new Viewer(format));
 
