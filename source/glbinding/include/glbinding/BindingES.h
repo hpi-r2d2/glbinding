@@ -34,7 +34,7 @@ public:
 
     static size_t size();
 
-    using array_t = std::array<AbstractFunction *, 36>;
+    using array_t = std::array<AbstractFunction *, 39>;
 
     static const array_t & functions();
     static const std::vector<AbstractFunction *> & additionalFunctions();
@@ -76,6 +76,9 @@ public:
     static Function<void, gles::GLuint, gles::GLsizei, gles::GLsizei *, gles::GLchar *> GetShaderInfoLog;
     static Function<void, gles::GLuint, gles::GLenum, gles::GLint *> GetProgramiv;
     static Function<void, gles::GLuint, gles::GLsizei, gles::GLsizei *, gles::GLchar *> GetProgramInfoLog;
+    static Function<const gles::GLubyte *, gles::GLenum> GetString;
+    static Function<const gles::GLubyte *, gles::GLenum, gles::GLuint> GetStringi;
+    static Function<void, gles::GLenum, gles::GLint *> GetIntegerv;
 protected:
     static const array_t s_functions;
     static std::vector<AbstractFunction *> s_additionalFunctions;

@@ -6,7 +6,7 @@
 #include <math.h>
 
 #include <glbinding/gles/gles.h>
-#include <glbinding/ContextInfo.h>
+#include <glbinding/ContextInfoES.h>
 #include <glbinding/Version.h>
 #include <glbinding/Meta.h>
 #include <glbinding/gles/extension.h>
@@ -57,7 +57,7 @@ CubeScape::CubeScape()
 {
     //gles::GLextension::GL_EXT_geometry_shader;
     std::set<std::string> unknown;
-    auto extensions = glbinding::ContextInfo::extensions(&unknown);
+    auto extensions = glbinding::ContextInfoES::extensions(&unknown);
     (void)extensions;
 
     if (unknown.find("GL_EXT_geometry_shader") == unknown.end()) // TODO: actually, this extension should be generated so it will be found in extensions

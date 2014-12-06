@@ -82,7 +82,7 @@ ProcAddress getProcAddressES(const char * name)
     if (dlsym_error)
     {
         std::cerr << "Cannot load symbol '" << name << "': " << dlsym_error << std::endl;
-        dlclose(handle);
+        //dlclose(handle);
         return nullptr;
     }
 

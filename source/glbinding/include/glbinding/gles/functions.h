@@ -188,4 +188,19 @@ inline void glGetProgramInfoLog(GLuint program, GLsizei bufSize, GLsizei * lengt
     return glbinding::BindingES::GetProgramInfoLog(program, bufSize, length, infoLog);
 }
 
+inline const GLubyte * glGetString(GLenum name)
+{
+    return glbinding::BindingES::GetString(name);
+}
+
+inline const GLubyte * glGetStringi(GLenum name, GLuint index)
+{
+    return glbinding::BindingES::GetStringi(name, index);
+}
+
+inline void glGetIntegerv(GLenum pname, GLint * data)
+{
+    return glbinding::BindingES::GetIntegerv(pname, data);
+}
+
 } // namespace gles

@@ -52,7 +52,15 @@ enum class GLenum : unsigned int
     GL_STACK_OVERFLOW     = 0x0503,
     GL_STACK_UNDERFLOW    = 0x0504,
     GL_OUT_OF_MEMORY      = 0x0505,
-    GL_INVALID_FRAMEBUFFER_OPERATION = 0x0506
+    GL_INVALID_FRAMEBUFFER_OPERATION = 0x0506,
+    GL_MAJOR_VERSION      = 0x821B,
+    GL_MINOR_VERSION      = 0x821C,
+    GL_NUM_EXTENSIONS     = 0x821D,
+
+    GL_VENDOR     = 0x1F00,
+    GL_RENDERER   = 0x1F01,
+    GL_VERSION    = 0x1F02,
+    GL_EXTENSIONS = 0x1F03
 };
 
 static const GLenum GL_FRAGMENT_SHADER = GLenum::GL_FRAGMENT_SHADER;
@@ -99,5 +107,12 @@ static const GLenum GL_STACK_OVERFLOW = GLenum::GL_STACK_OVERFLOW;
 static const GLenum GL_STACK_UNDERFLOW = GLenum::GL_STACK_UNDERFLOW;
 static const GLenum GL_OUT_OF_MEMORY = GLenum::GL_OUT_OF_MEMORY;
 static const GLenum GL_INVALID_FRAMEBUFFER_OPERATION = GLenum::GL_INVALID_FRAMEBUFFER_OPERATION;
+static const GLenum GL_EXTENSIONS = GLenum::GL_EXTENSIONS;
+static const GLenum GL_MAJOR_VERSION = GLenum::GL_MAJOR_VERSION;
+static const GLenum GL_MINOR_VERSION = GLenum::GL_MINOR_VERSION;
+static const GLenum GL_NUM_EXTENSIONS = GLenum::GL_NUM_EXTENSIONS;
+static const GLenum GL_VENDOR = GLenum::GL_VENDOR;
+static const GLenum GL_RENDERER = GLenum::GL_RENDERER;
+static const GLenum GL_VERSION = GLenum::GL_VERSION;
 
 } // namespace gles

@@ -7,7 +7,7 @@
 #include <OpenGL/OpenGL.h>
 #endif
 
-#include <glbinding/ContextInfo.h>
+#include <glbinding/ContextInfoES.h>
 #include <glbinding/Version.h>
 
 #include <QDebug>
@@ -97,11 +97,11 @@ void Canvas::initializeGL(const QSurfaceFormat & format)
     qDebug() << "OpenGL API:     " << (m_context->isOpenGLES() ? "GLES" : "GL");
 #endif
     qDebug() << "OpenGL Version: " << qPrintable(QString::fromStdString(
-        glbinding::ContextInfo::version().toString()));
+        glbinding::ContextInfoES::version().toString()));
     qDebug() << "OpenGL Vendor:  " << qPrintable(QString::fromStdString(
-        glbinding::ContextInfo::vendor()));
+        glbinding::ContextInfoES::vendor()));
     qDebug() << "OpenGL Renderer:" << qPrintable(QString::fromStdString(
-        glbinding::ContextInfo::renderer()));
+        glbinding::ContextInfoES::renderer()));
     qDebug();
 
     m_context->doneCurrent();

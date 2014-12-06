@@ -47,6 +47,9 @@ Function<void, gles::GLuint, gles::GLenum, gles::GLint *> BindingES::GetShaderiv
 Function<void, gles::GLuint, gles::GLsizei, gles::GLsizei *, gles::GLchar *> BindingES::GetShaderInfoLog("glGetShaderInfoLog");
 Function<void, gles::GLuint, gles::GLenum, gles::GLint *> BindingES::GetProgramiv("glGetProgramiv");
 Function<void, gles::GLuint, gles::GLsizei, gles::GLsizei *, gles::GLchar *> BindingES::GetProgramInfoLog("glGetProgramInfoLog");
+Function<const gles::GLubyte *, gles::GLenum> BindingES::GetString("glGetString");
+Function<const gles::GLubyte *, gles::GLenum, gles::GLuint> BindingES::GetStringi("glGetStringi");
+Function<void, gles::GLenum, gles::GLint *> BindingES::GetIntegerv("glGetIntegerv");
 
 const BindingES::array_t BindingES::s_functions = {{
     &BindingES::GetError,
@@ -84,7 +87,10 @@ const BindingES::array_t BindingES::s_functions = {{
     &BindingES::GetShaderiv,
     &BindingES::GetShaderInfoLog,
     &BindingES::GetProgramiv,
-    &BindingES::GetProgramInfoLog
+    &BindingES::GetProgramInfoLog,
+    &BindingES::GetString,
+    &BindingES::GetStringi,
+    &BindingES::GetIntegerv
 }};
 
 } // namespace glbinding
