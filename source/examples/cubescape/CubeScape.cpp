@@ -64,7 +64,7 @@ CubeScape::CubeScape()
     {
         std::cout << "Geometry shader is not supported" << std::endl;
 
-        exit(1);
+        //exit(1);
     }
 
     GLuint vs = glCreateShader(GL_VERTEX_SHADER);

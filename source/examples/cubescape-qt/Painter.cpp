@@ -30,7 +30,8 @@ void Painter::initialize()
     glbinding::setAfterCallback([](const glbinding::FunctionCall & /*function*/)
     {
         gles::GLenum error = glbinding::BindingES::GetError();
-        assert(error == gles::GL_NO_ERROR);
+        (void)error;
+        //assert(error == gles::GL_NO_ERROR);
     });
 
     glbinding::setCallbackMaskExcept(glbinding::CallbackMask::After, { "glGetError" });
