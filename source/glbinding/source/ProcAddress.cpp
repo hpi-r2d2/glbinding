@@ -68,7 +68,7 @@ ProcAddress getProcAddressES(const char * name)
 
     typedef void (* PROCADDRESS)();
 
-    void* handle = dlopen("libGLESv2.so", RTLD_LAZY);
+    static void* handle = dlopen("libGLESv2.so", RTLD_LAZY);
 
     if (!handle)
     {
@@ -81,12 +81,12 @@ ProcAddress getProcAddressES(const char * name)
     const char *dlsym_error = dlerror();
     if (dlsym_error)
     {
-        std::cerr << "Cannot load symbol 'hello': " << dlsym_error << std::endl;
+        std::cerr << "Cannot load symbol '" << name << "': " << dlsym_error << std::endl;
         dlclose(handle);
         return nullptr;
     }
 
-    dlclose(handle);
+    //dlclose(handle); // TODO: close on exit
 
 #endif
 

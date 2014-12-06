@@ -11,6 +11,7 @@ using namespace gles; // ToDo: multiple APIs?
 namespace glbinding 
 {
 
+Function<gles::GLenum> BindingES::GetError("glGetError");
 Function<gles::GLuint, gles::GLenum> BindingES::CreateShader("glCreateShader");
 Function<void, gles::GLuint, gles::GLsizei, const gles::GLchar *const*, const gles::GLint *> BindingES::ShaderSource("glShaderSource");
 Function<void, gles::GLuint> BindingES::CompileShader("glCompileShader");
@@ -18,7 +19,6 @@ Function<gles::GLuint> BindingES::CreateProgram("glCreateProgram");
 Function<void, gles::GLuint, gles::GLuint> BindingES::AttachShader("glAttachShader");
 Function<void, gles::GLuint> BindingES::LinkProgram("glLinkProgram");
 Function<void, gles::GLsizei, gles::GLuint *> BindingES::GenTextures("glGenTextures");
-Function<void, gles::GLuint, gles::GLsizei, const gles::GLuint *> BindingES::BindTextures("glBindTextures");
 Function<void, gles::GLenum, gles::GLenum, gles::GLint> BindingES::TexParameteri("glTexParameteri");
 Function<void, gles::GLenum, gles::GLuint> BindingES::BindTexture("glBindTexture");
 Function<void, gles::GLenum, gles::GLint, gles::GLint, gles::GLsizei, gles::GLsizei, gles::GLint, gles::GLenum, gles::GLenum, const void *> BindingES::TexImage2D("glTexImage2D");
@@ -28,7 +28,7 @@ Function<void, gles::GLsizei, gles::GLuint *> BindingES::GenBuffers("glGenBuffer
 Function<void, gles::GLenum, gles::GLuint> BindingES::BindBuffer("glBindBuffer");
 Function<void, gles::GLenum, gles::GLsizeiptr, const void *, gles::GLenum> BindingES::BufferData("glBufferData");
 Function<gles::GLint, gles::GLuint, const gles::GLchar *> BindingES::GetAttribLocation("glGetAttribLocation");
-Function<void, gles::GLuint> BindingES::EnableVertexAttribArray("glEnableVertexArray");
+Function<void, gles::GLuint> BindingES::EnableVertexAttribArray("glEnableVertexAttribArray");
 Function<void, gles::GLuint, gles::GLint, gles::GLenum, gles::GLboolean, gles::GLsizei, const void *> BindingES::VertexAttribPointer("glVertexAttribPointer");
 Function<gles::GLint, gles::GLuint, const gles::GLchar *> BindingES::GetUniformLocation("glGetUniformLocation");
 Function<void, gles::GLenum> BindingES::Enable("glEnable");
@@ -49,6 +49,7 @@ Function<void, gles::GLuint, gles::GLenum, gles::GLint *> BindingES::GetProgrami
 Function<void, gles::GLuint, gles::GLsizei, gles::GLsizei *, gles::GLchar *> BindingES::GetProgramInfoLog("glGetProgramInfoLog");
 
 const BindingES::array_t BindingES::s_functions = {{
+    &BindingES::GetError,
     &BindingES::CreateShader,
     &BindingES::ShaderSource,
     &BindingES::CompileShader,
@@ -56,7 +57,6 @@ const BindingES::array_t BindingES::s_functions = {{
     &BindingES::AttachShader,
     &BindingES::LinkProgram,
     &BindingES::GenTextures,
-    &BindingES::BindTextures,
     &BindingES::TexParameteri,
     &BindingES::BindTexture,
     &BindingES::TexImage2D,

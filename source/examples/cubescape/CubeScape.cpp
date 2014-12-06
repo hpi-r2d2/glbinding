@@ -6,6 +6,10 @@
 #include <math.h>
 
 #include <glbinding/gles/gles.h>
+#include <glbinding/ContextInfo.h>
+#include <glbinding/Version.h>
+#include <glbinding/Meta.h>
+#include <glbinding/gles/extension.h>
 
 #include "glutils.h"
 #include "RawFile.h"
@@ -51,6 +55,18 @@ CubeScape::CubeScape()
 , m_a(0.f)
 , m_numcubes(16)
 {
+    //gles::GLextension::GL_EXT_geometry_shader;
+    std::set<std::string> unknown;
+    auto extensions = glbinding::ContextInfo::extensions(&unknown);
+    (void)extensions;
+
+    if (unknown.find("GL_EXT_geometry_shader") == unknown.end()) // TODO: actually, this extension should be generated so it will be found in extensions
+    {
+        std::cout << "Geometry shader is not supported" << std::endl;
+
+        exit(1);
+    }
+
     GLuint vs = glCreateShader(GL_VERTEX_SHADER);
     GLuint gs = glCreateShader(GL_GEOMETRY_SHADER);
     GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);

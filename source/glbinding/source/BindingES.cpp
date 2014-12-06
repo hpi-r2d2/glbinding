@@ -11,7 +11,6 @@ namespace
 
     std::recursive_mutex g_mutex;
     std::unordered_map<glbinding::ContextHandle, int> g_bindings;
-    const glbinding::BindingES::array_t none = {{}};
 }
 
 namespace glbinding 
@@ -21,8 +20,7 @@ std::vector<AbstractFunction *> BindingES::s_additionalFunctions;
 
 const BindingES::array_t & BindingES::functions()
 {
-    return none;
-    //return s_esfunctions;
+    return s_functions;
 }
 
 const std::vector<AbstractFunction *> & BindingES::additionalFunctions()

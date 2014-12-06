@@ -1,6 +1,8 @@
 
 #include "Painter.h"
 
+#include <cassert>
+
 #include <glbinding/BindingES.h>
 #include <glbinding/ContextInfo.h>
 
@@ -23,7 +25,15 @@ void Painter::initialize()
     if (m_initialized)
         return;
 
-    glbinding::BindingES::initialize(false); // only resolve functions that are actually used (lazy)
+    glbinding::BindingES::initialize(true); // only resolve functions that are actually used (lazy)
+
+    glbinding::setAfterCallback([](const glbinding::FunctionCall & /*function*/)
+    {
+        gles::GLenum error = glbinding::BindingES::GetError();
+        assert(error == gles::GL_NO_ERROR);
+    });
+
+    glbinding::setCallbackMaskExcept(glbinding::CallbackMask::After, { "glGetError" });
 
     m_cubescape = new CubeScape();
 

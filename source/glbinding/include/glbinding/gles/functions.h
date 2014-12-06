@@ -8,6 +8,11 @@
 namespace gles
 {
 
+inline GLenum glGetError()
+{
+    return glbinding::BindingES::GetError();
+}
+
 inline GLuint glCreateShader(GLenum type)
 {
     return glbinding::BindingES::CreateShader(type);
@@ -41,11 +46,6 @@ inline void glLinkProgram(GLuint program)
 inline void glGenTextures(GLsizei n, GLuint * textures)
 {
     return glbinding::BindingES::GenTextures(n, textures);
-}
-
-inline void glBindTextures(GLuint first, GLsizei count, const GLuint * textures)
-{
-    return glbinding::BindingES::BindTextures(first, count, textures);
 }
 
 inline void glTexParameteri(GLenum target, GLenum pname, GLint param)

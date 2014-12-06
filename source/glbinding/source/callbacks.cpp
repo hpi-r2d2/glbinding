@@ -5,6 +5,7 @@
 
 #include <glbinding/AbstractValue.h>
 #include <glbinding/Binding.h>
+#include <glbinding/BindingES.h>
 
 namespace
 {
@@ -43,11 +44,18 @@ void setCallbackMask(const CallbackMask mask)
 {
     for (AbstractFunction * function : Binding::functions())
         function->setCallbackMask(mask);
+
+    for (AbstractFunction * function : BindingES::functions())
+        function->setCallbackMask(mask);
 }
 
 void setCallbackMaskExcept(const CallbackMask mask, const std::set<std::string> & blackList)
 {
     for (AbstractFunction * function : Binding::functions())
+        if (blackList.find(function->name()) == blackList.end())
+            function->setCallbackMask(mask);
+
+    for (AbstractFunction * function : BindingES::functions())
         if (blackList.find(function->name()) == blackList.end())
             function->setCallbackMask(mask);
 }

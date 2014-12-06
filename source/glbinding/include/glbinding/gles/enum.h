@@ -44,7 +44,15 @@ enum class GLenum : unsigned int
     GL_TRIANGLES          = 0x0004,
     GL_COMPILE_STATUS     = 0x8B81,
     GL_INFO_LOG_LENGTH    = 0x8B84,
-    GL_LINK_STATUS        = 0x8B82
+    GL_LINK_STATUS        = 0x8B82,
+    GL_NO_ERROR           = 0x0,
+    GL_INVALID_ENUM       = 0x0500,
+    GL_INVALID_VALUE      = 0x0501,
+    GL_INVALID_OPERATION  = 0x0502,
+    GL_STACK_OVERFLOW     = 0x0503,
+    GL_STACK_UNDERFLOW    = 0x0504,
+    GL_OUT_OF_MEMORY      = 0x0505,
+    GL_INVALID_FRAMEBUFFER_OPERATION = 0x0506
 };
 
 static const GLenum GL_FRAGMENT_SHADER = GLenum::GL_FRAGMENT_SHADER;
@@ -83,5 +91,13 @@ static const GLenum GL_TRIANGLES = GLenum::GL_TRIANGLES;
 static const GLenum GL_COMPILE_STATUS = GLenum::GL_COMPILE_STATUS;
 static const GLenum GL_INFO_LOG_LENGTH = GLenum::GL_INFO_LOG_LENGTH;
 static const GLenum GL_LINK_STATUS = GLenum::GL_LINK_STATUS;
+static const GLenum GL_NO_ERROR = GLenum::GL_NO_ERROR;
+static const GLenum GL_INVALID_ENUM = GLenum::GL_INVALID_ENUM;
+static const GLenum GL_INVALID_VALUE = GLenum::GL_INVALID_VALUE;
+static const GLenum GL_INVALID_OPERATION = GLenum::GL_INVALID_OPERATION;
+static const GLenum GL_STACK_OVERFLOW = GLenum::GL_STACK_OVERFLOW;
+static const GLenum GL_STACK_UNDERFLOW = GLenum::GL_STACK_UNDERFLOW;
+static const GLenum GL_OUT_OF_MEMORY = GLenum::GL_OUT_OF_MEMORY;
+static const GLenum GL_INVALID_FRAMEBUFFER_OPERATION = GLenum::GL_INVALID_FRAMEBUFFER_OPERATION;
 
 } // namespace gles

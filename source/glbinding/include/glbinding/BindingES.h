@@ -40,6 +40,7 @@ public:
     static const std::vector<AbstractFunction *> & additionalFunctions();
 
 public:
+    static Function<gles::GLenum> GetError;
     static Function<gles::GLuint, gles::GLenum> CreateShader;
     static Function<void, gles::GLuint, gles::GLsizei, const gles::GLchar *const*, const gles::GLint *> ShaderSource;
     static Function<void, gles::GLuint> CompileShader;
@@ -47,7 +48,6 @@ public:
     static Function<void, gles::GLuint, gles::GLuint> AttachShader;
     static Function<void, gles::GLuint> LinkProgram;
     static Function<void, gles::GLsizei, gles::GLuint *> GenTextures;
-    static Function<void, gles::GLuint, gles::GLsizei, const gles::GLuint *> BindTextures;
     static Function<void, gles::GLenum, gles::GLenum, gles::GLint> TexParameteri;
     static Function<void, gles::GLenum, gles::GLuint> BindTexture;
     static Function<void, gles::GLenum, gles::GLint, gles::GLint, gles::GLsizei, gles::GLsizei, gles::GLint, gles::GLenum, gles::GLenum, const void *> TexImage2D;
