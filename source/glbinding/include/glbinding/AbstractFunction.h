@@ -35,7 +35,6 @@ public:
     ProcAddress address() const;
 
     const std::set<gl::GLextension> & extensions() const;
-
 public:
     void setCallbackMask(CallbackMask mask);
 
