@@ -16,10 +16,6 @@
 
 #include <glbinding/gl/gl32.h>
 
-// Hack
-gl::GLboolean GL_TRUE = gl::GL_TRUE;
-gl::GLboolean GL_FALSE = gl::GL_FALSE;
-
 
 using namespace gl32;
 using namespace glbinding;
@@ -84,7 +80,7 @@ int main()
     setCallbackMask(CallbackMask::After | CallbackMask::ParametersAndReturnValue);
 
     setAfterCallback([](const FunctionCall & call) {
-        std::cout << call.function.name() << "(";
+        std::cout << call.function->name() << "(";
 
         for (unsigned i = 0; i < call.parameters.size(); ++i)
         {

@@ -1,7 +1,6 @@
 #pragma once
 
-#include <glbinding/gl/nogl.h>
-#include <glbinding/gl/types.h>
+#include <glbinding/nogl.h>
 
 
 namespace gl
@@ -9,7 +8,7 @@ namespace gl
 
 enum class GLboolean : unsigned char
 {
-	GL_FALSE = 0,
+    GL_FALSE = 0,
     GL_TRUE = 1
 };
 
